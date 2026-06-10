@@ -22,9 +22,8 @@ export default function About() {
           <p className="reveal" data-d="3">
             Operamos bajo una premisa clara: <b style={{ color: "var(--color-ink)" }}>orden,
             respaldo y cero improvisación</b>. Cada documento queda organizado y cada operación
-            trazada, para que decidas sobre información precisa y no sobre suposiciones. Y cuando
-            el terreno lo exige, sumamos el respaldo contable de nuestra alianza con{" "}
-            <b style={{ color: "var(--color-ink)" }}>Consulting Group AE S.A.S.</b>
+            trazada, para que decidas sobre información precisa y no sobre suposiciones — con
+            comunicación fluida entre tu operación y tu equipo contable.
           </p>
           <div className="about__pills">
             {ABOUT_PILLS.map((p, i) => (

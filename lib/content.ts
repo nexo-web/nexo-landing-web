@@ -74,7 +74,7 @@ export const SERVICES: Service[] = [
   { icon: "archive", title: "Apoyo Documental y Archivo", desc: "Digitalización y control de documentos, políticas internas de archivo y custodia de documentación legal y financiera." },
   { icon: "check2", title: "Cumplimiento y Normatividad", desc: "Control de obligaciones periódicas, actualización de registros y certificaciones, y soporte ante entidades." },
   { icon: "chip", title: "Soporte al Sector Cripto y Digital", desc: "Trazabilidad de operaciones digitales, acompañamiento normativo y cumplimiento de políticas UIAF y DIAN." },
-  { icon: "scale", title: "Coordinación Contable Aliada", desc: "En alianza con Consulting Group AE S.A.S.: entrega oportuna de documentos y cronogramas de reportes financieros." },
+  { icon: "scale", title: "Coordinación Contable", desc: "Coordinación con tu equipo contable: entrega oportuna de documentos, cronogramas de reportes financieros y comunicación fluida entre áreas." },
   { icon: "building", title: "Trámites ante Cámara de Comercio", desc: "Creación de empresas, reformas, actas, nombramientos y renovación de matrícula mercantil." },
   { icon: "spark", title: "Servicios Personalizados", desc: "Soluciones a la medida: contratos, correspondencia, agendas, procesos y estructuración organizacional." },
 ];
@@ -157,7 +157,7 @@ export const FAQS = [
   },
   {
     q: "¿Ustedes llevan la contabilidad?",
-    a: "Trabajamos en alianza con Consulting Group AE S.A.S. para la coordinación contable: garantizamos la entrega oportuna de documentos, cronogramas de reportes financieros y comunicación fluida entre tu empresa y el equipo contable.",
+    a: "No reemplazamos a tu contador: coordinamos con tu equipo contable para garantizar la entrega oportuna de documentos, los cronogramas de reportes financieros y una comunicación fluida entre las áreas administrativa y contable.",
   },
   {
     q: "¿Cómo protegen la información de mi empresa?",
