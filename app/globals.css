@@ -1014,6 +1014,21 @@ body.motion-on .hero__intro .hero__trust {
   border-radius: 100px;
   padding: 8px 15px;
 }
+/* transición que cubre la entrada (reveal) y el hover sin pisarse */
+.about__pills .pill {
+  transition:
+    opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.9s,
+    border-color 0.35s,
+    background 0.35s,
+    color 0.35s;
+}
+.pill:hover {
+  border-color: var(--color-gold);
+  color: var(--color-ink);
+  background: rgba(232, 192, 74, 0.08);
+}
 .pill b {
   color: var(--color-gold);
   font-weight: 400;

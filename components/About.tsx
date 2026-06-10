@@ -8,24 +8,27 @@ export default function About() {
         <div className="about__copy">
           <span className="eyebrow reveal">Quiénes somos</span>
           <h2 className="h-section reveal" data-d="1" style={{ marginTop: 20 }}>
-            Un aliado estratégico
+            La estructura que tu empresa
             <br />
-            en cada proceso interno
+            <span className="gold-text">no tiene que construir</span>
           </h2>
           <p className="reveal" data-d="2">
-            <b style={{ color: "var(--color-ink)" }}>NEXO Administración Integral</b> ofrece
-            servicios administrativos, operativos y de gestión, diseñados para apoyar tanto a
-            compañías consolidadas como a nuevos emprendimientos.
+            <b style={{ color: "var(--color-ink)" }}>NEXO Administración Integral</b> no es un
+            proveedor más: es el área administrativa que tu negocio necesita sin tener que
+            montarla desde cero. Acompañamos por igual a compañías consolidadas y a
+            emprendimientos que recién despegan, con un dominio particular del ecosistema
+            digital y cripto.
           </p>
           <p className="reveal" data-d="3">
-            Acompañamos a nuestros clientes en sus procesos internos para que se enfoquen en
-            crecer, mientras nosotros nos ocupamos de la administración, la documentación, la
-            comunicación con entidades y la trazabilidad de cada operación — con eficiencia,
-            transparencia y cumplimiento normativo.
+            Operamos bajo una premisa clara: <b style={{ color: "var(--color-ink)" }}>orden,
+            respaldo y cero improvisación</b>. Cada documento queda organizado y cada operación
+            trazada, para que decidas sobre información precisa y no sobre suposiciones. Y cuando
+            el terreno lo exige, sumamos el respaldo contable de nuestra alianza con{" "}
+            <b style={{ color: "var(--color-ink)" }}>Consulting Group AE S.A.S.</b>
           </p>
-          <div className="about__pills reveal" data-d="4">
-            {ABOUT_PILLS.map((p) => (
-              <span className="pill" key={p}>
+          <div className="about__pills">
+            {ABOUT_PILLS.map((p, i) => (
+              <span className="pill reveal" data-d={i + 1} key={p}>
                 <b>+</b> {p}
               </span>
             ))}
