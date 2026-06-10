@@ -1,5 +1,6 @@
 import { ABOUT_PILLS } from "@/lib/content";
 import { BarsIcon, CoinIcon, FlowIcon, PinIcon, ShieldIcon } from "@/components/icons";
+import AnimatedText from "@/components/AnimatedText";
 
 export default function About() {
   return (
@@ -12,19 +13,14 @@ export default function About() {
             <br />
             <span className="gold-text">no tiene que construir</span>
           </h2>
-          <p className="reveal" data-d="2">
-            <b style={{ color: "var(--color-ink)" }}>NEXO Administración Integral</b> no es un
-            proveedor más: es el área administrativa que tu negocio necesita sin tener que
-            montarla desde cero. Acompañamos por igual a compañías consolidadas y a
-            emprendimientos que recién despegan, con un dominio particular del ecosistema
-            digital y cripto.
-          </p>
-          <p className="reveal" data-d="3">
-            Operamos bajo una premisa clara: <b style={{ color: "var(--color-ink)" }}>orden,
-            respaldo y cero improvisación</b>. Cada documento queda organizado y cada operación
-            trazada, para que decidas sobre información precisa y no sobre suposiciones — con
-            comunicación fluida entre tu operación y tu equipo contable.
-          </p>
+          <AnimatedText
+            className="about__lead"
+            text="NEXO Administración Integral no es un proveedor más: es el área administrativa que tu negocio necesita sin tener que montarla desde cero. Acompañamos por igual a compañías consolidadas y a emprendimientos que recién despegan, con un dominio particular del ecosistema digital y cripto."
+          />
+          <AnimatedText
+            className="about__lead"
+            text="Operamos bajo una premisa clara: orden, respaldo y cero improvisación. Cada documento queda organizado y cada operación trazada, para que decidas sobre información precisa y no sobre suposiciones."
+          />
           <div className="about__pills">
             {ABOUT_PILLS.map((p, i) => (
               <span className="pill reveal" data-d={i + 1} key={p}>

@@ -823,6 +823,11 @@ body.motion-on .hero__intro .hero__trust {
 .marquee:hover .marquee__track {
   animation-play-state: paused;
 }
+/* track controlado por JS (reactivo al scroll): sin animación CSS */
+.marquee__track--live {
+  animation: none;
+  will-change: transform;
+}
 .marquee__item {
   display: flex;
   align-items: center;
@@ -920,6 +925,18 @@ body.motion-on .hero__intro .hero__trust {
   color: var(--color-ink-2);
   margin-top: 20px;
   max-width: 54ch;
+}
+/* párrafo con revelado palabra por palabra al hacer scroll */
+.about__lead {
+  margin-top: 20px;
+  max-width: 54ch;
+  font-size: clamp(16px, 1.7vw, 18px);
+  line-height: 1.7;
+  color: var(--color-ink);
+}
+.about__lead .aw {
+  display: inline;
+  will-change: opacity;
 }
 /* ---- bento de datos (panel quiénes somos) ---- */
 .about__bento {
@@ -1150,36 +1167,63 @@ body.motion-on .hero__intro .hero__trust {
   position: relative;
   z-index: 1;
 }
+/* fila superior: icono + botón "+/×" */
+.svc__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+.svc__plus,
+.ben__plus {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--color-gold);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.35s;
+}
+.svc__plus svg,
+.ben__plus svg {
+  width: 16px;
+  height: 16px;
+}
+.svc[data-open] .svc__plus,
+.ben[data-open] .ben__plus {
+  transform: rotate(135deg);
+  background: rgba(232, 192, 74, 0.12);
+}
+/* el icono baja su margen porque ahora vive en la fila superior */
+.svc .svc__icon {
+  margin: 0 0 18px;
+}
+.svc__reveal {
+  position: relative;
+  z-index: 1;
+}
 .svc__more {
   margin-top: 16px;
   font-family: var(--font-mono);
   font-size: 11.5px;
   letter-spacing: 0.08em;
   color: var(--color-ink-2);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: 0.4s;
-  position: relative;
-  z-index: 1;
+  transition: gap 0.3s;
 }
 .svc__more svg {
   width: 14px;
   height: 14px;
   color: var(--color-gold);
 }
-.svc:hover .svc__more {
-  opacity: 1;
-  transform: none;
-}
-/* en dispositivos táctiles (sin hover) el CTA debe verse siempre */
-@media (hover: none) {
-  .svc__more {
-    opacity: 1;
-    transform: none;
-  }
+.svc__more:hover {
+  gap: 12px;
+  color: var(--color-ink);
 }
 
 /* ============================================================
@@ -1293,72 +1337,84 @@ body.motion-on .hero__intro .hero__trust {
 }
 
 /* ============================================================
-   PROCESO
+   PROCESO — tarjetas apiladas (sticky stack)
    ============================================================ */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  counter-reset: step;
-}
-@media (max-width: 980px) {
-  .steps {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 620px) {
-  .steps {
-    grid-template-columns: 1fr;
-  }
-}
-.step {
+.step-stack {
+  margin-top: 40px;
   position: relative;
-  background: var(--color-surface);
-  border: 1px solid var(--line-soft);
-  border-radius: var(--r);
-  padding: 30px 26px 32px;
-  overflow: hidden;
-  transition: border-color 0.4s, transform 0.4s;
 }
-.step:hover {
-  border-color: var(--line);
-  transform: translateY(-4px);
+/* cada paso ocupa una "ventana" de scroll donde su tarjeta queda fija */
+.step-pin {
+  height: 78vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
 }
-.step__num {
+.step-card {
+  position: relative;
+  width: min(100%, var(--maxw));
+  margin-inline: var(--gut);
+  display: flex;
+  gap: clamp(20px, 4vw, 48px);
+  align-items: flex-start;
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(232, 192, 74, 0.1), transparent 55%),
+    var(--color-surface);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: clamp(28px, 4vw, 52px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+  transform-origin: top center;
+  will-change: transform;
+}
+.step-card__num {
   font-family: var(--font-display);
-  font-size: 64px;
+  font-size: clamp(56px, 9vw, 120px);
   font-weight: 700;
-  line-height: 1;
+  line-height: 0.9;
   letter-spacing: -0.04em;
-  background: linear-gradient(180deg, rgba(232, 192, 74, 0.5), rgba(232, 192, 74, 0.05));
+  background: linear-gradient(180deg, rgba(232, 192, 74, 0.7), rgba(232, 192, 74, 0.06));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  display: block;
-  margin-bottom: 18px;
+  flex: 0 0 auto;
 }
-.step h3 {
-  font-size: 19px;
-  margin-bottom: 10px;
+.step-card__body {
+  flex: 1 1 auto;
+  padding-top: 6px;
 }
-.step p {
-  font-size: 14.5px;
+.step-card__body h3 {
+  font-size: clamp(20px, 2.4vw, 30px);
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.step-card__body p {
+  font-size: clamp(14.5px, 1.6vw, 17px);
   color: var(--color-ink-2);
-  line-height: 1.6;
+  line-height: 1.65;
+  max-width: 56ch;
 }
-.step__line {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--gold-grad);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+.step-card__index {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--color-gold);
+  flex: 0 0 auto;
+  align-self: flex-start;
 }
-.step:hover .step__line {
-  transform: scaleX(1);
+@media (max-width: 700px) {
+  .step-pin {
+    height: 82vh;
+  }
+  .step-card {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .step-card__index {
+    order: -1;
+    width: 100%;
+  }
 }
 
 /* ============================================================
@@ -1390,6 +1446,12 @@ body.motion-on .hero__intro .hero__trust {
   border-color: var(--line);
   transform: translateY(-4px);
 }
+.ben__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
 .ben__ic {
   width: 40px;
   height: 40px;
@@ -1398,7 +1460,6 @@ body.motion-on .hero__intro .hero__trust {
   display: grid;
   place-items: center;
   color: #1a1206;
-  margin-bottom: 18px;
 }
 .ben__ic svg {
   width: 20px;
@@ -1406,11 +1467,12 @@ body.motion-on .hero__intro .hero__trust {
 }
 .ben h3 {
   font-size: 17px;
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
-.ben p {
+.ben__reveal p {
   font-size: 14.5px;
   color: var(--color-ink-2);
+  margin-top: 10px;
 }
 
 /* ============================================================
