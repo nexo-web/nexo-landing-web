@@ -49,10 +49,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer__bottom">
-          <span>
-            © {new Date().getFullYear()} NEXO Administración Integral · {CONTACT.rep} ·{" "}
-            {CONTACT.nit}
-          </span>
+          <span>© {new Date().getFullYear()} NEXO Administración Integral</span>
           <span>Medellín, Colombia</span>
         </div>
       </div>
