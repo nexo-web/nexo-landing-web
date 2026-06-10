@@ -1,15 +1,14 @@
-import Image from "next/image";
 import { CRYPTO_POINTS } from "@/lib/content";
-import { CheckIcon } from "@/components/icons";
+import { ArrowIcon, CheckIcon } from "@/components/icons";
 
 const NODES = [
-  { x: "18%", y: "22%", d: "0s" },
-  { x: "78%", y: "30%", d: "-1.5s" },
-  { x: "30%", y: "72%", d: "-3s" },
-  { x: "70%", y: "70%", d: "-4.5s" },
-  { x: "50%", y: "14%", d: "-2.2s" },
-  { x: "86%", y: "56%", d: "-3.8s" },
+  { x: "12%", y: "18%", d: "0s" },
+  { x: "88%", y: "24%", d: "-1.5s" },
+  { x: "16%", y: "82%", d: "-3s" },
+  { x: "84%", y: "80%", d: "-4.5s" },
 ];
+
+const SPARK = [42, 58, 50, 72, 64, 84, 76, 92];
 
 export default function Crypto() {
   return (
@@ -48,13 +47,6 @@ export default function Crypto() {
             </div>
             <div className="crypto__viz" aria-hidden>
               <div className="crypto__viz-grid"></div>
-              <Image
-                className="crypto__viz-logo"
-                src="/nexo-mark.png"
-                alt=""
-                width={220}
-                height={220}
-              />
               {NODES.map((n, i) => (
                 <span
                   key={i}
@@ -62,6 +54,49 @@ export default function Crypto() {
                   style={{ left: n.x, top: n.y, animationDelay: n.d }}
                 ></span>
               ))}
+              <div className="otc">
+                <div className="otc__head">
+                  <span className="otc__brand">
+                    <i className="otc__live"></i> Mesa OTC
+                  </span>
+                  <span className="otc__tag">Cripto · Fintech</span>
+                </div>
+                <div className="otc__swap">
+                  <span className="otc__coin">
+                    <span className="otc__sym">₿</span> BTC
+                  </span>
+                  <span className="otc__go">
+                    <ArrowIcon />
+                  </span>
+                  <span className="otc__coin otc__coin--alt">
+                    <span className="otc__sym">₮</span> USDT
+                  </span>
+                </div>
+                <div className="otc__meta">
+                  <div>
+                    <small>Estado</small>
+                    <b>Custodia</b>
+                  </div>
+                  <div>
+                    <small>Confirm.</small>
+                    <b>6 / 6</b>
+                  </div>
+                  <div>
+                    <small>Traza</small>
+                    <b>100%</b>
+                  </div>
+                </div>
+                <div className="otc__spark">
+                  {SPARK.map((h, i) => (
+                    <i key={i} style={{ height: `${h}%`, animationDelay: `${-i * 0.32}s` }}></i>
+                  ))}
+                </div>
+                <div className="otc__chips">
+                  <span>UIAF</span>
+                  <span>On-chain</span>
+                  <span>Auditable</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

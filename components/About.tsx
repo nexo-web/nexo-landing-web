@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { ABOUT_PILLS } from "@/lib/content";
+import { BarsIcon, CoinIcon, FlowIcon, PinIcon, ShieldIcon } from "@/components/icons";
 
 export default function About() {
   return (
@@ -31,25 +31,42 @@ export default function About() {
             ))}
           </div>
         </div>
-        <div className="about__panel reveal" data-d="2">
-          <div className="about__media">
-            <div className="medallion">
-              <div className="medallion__glow"></div>
-              <div className="medallion__halo"></div>
-              <div className="medallion__ring"></div>
-              <Image
-                className="medallion__logo"
-                src="/nexo-mark.png"
-                alt="NEXO"
-                width={260}
-                height={260}
-              />
-            </div>
-          </div>
-          <div className="statcard">
-            <b>11</b>
-            <small>áreas de servicio integral</small>
-          </div>
+        <div className="about__bento">
+          <article className="bento reveal" data-d="1">
+            <span className="bento__ic">
+              <BarsIcon />
+            </span>
+            <b className="bento__num">11</b>
+            <span className="bento__lbl">áreas de servicio integral</span>
+          </article>
+          <article className="bento reveal" data-d="2">
+            <span className="bento__ic">
+              <FlowIcon />
+            </span>
+            <b className="bento__num">100%</b>
+            <span className="bento__lbl">Trazabilidad de operaciones</span>
+          </article>
+          <article className="bento bento--wide reveal" data-d="3">
+            <span className="bento__ic">
+              <ShieldIcon />
+            </span>
+            <b className="bento__big">UIAF · DIAN</b>
+            <span className="bento__lbl">Cumplimiento normativo y soporte ante entidades</span>
+          </article>
+          <article className="bento reveal" data-d="4">
+            <span className="bento__ic">
+              <CoinIcon />
+            </span>
+            <b className="bento__big">Cripto &amp; Fintech</b>
+            <span className="bento__lbl">Experiencia real en el sector</span>
+          </article>
+          <article className="bento reveal" data-d="5">
+            <span className="bento__ic">
+              <PinIcon />
+            </span>
+            <b className="bento__big">Medellín, CO</b>
+            <span className="bento__lbl">El Poblado · Antioquia</span>
+          </article>
         </div>
       </div>
     </section>

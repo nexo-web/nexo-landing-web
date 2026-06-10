@@ -19,7 +19,7 @@ export default function Benefits() {
                 <div className="ben__ic">
                   <Icon />
                 </div>
-                <h4>{b.title}</h4>
+                <h3>{b.title}</h3>
                 <p>{b.desc}</p>
               </article>
             );

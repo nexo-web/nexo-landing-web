@@ -84,7 +84,7 @@ export default function Nav() {
         </div>
       </nav>
 
-      <div className={"mobile-menu" + (open ? " open" : "")} aria-hidden={!open}>
+      <div className={"mobile-menu" + (open ? " open" : "")} aria-hidden={!open} inert={!open}>
         <button className="mm-close" onClick={() => setOpen(false)} aria-label="Cerrar menú">
           ×
         </button>

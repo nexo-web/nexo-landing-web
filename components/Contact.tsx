@@ -15,11 +15,14 @@ export default function Contact() {
     const empresa = String(data.get("empresa") || "").trim();
     const mensaje = String(data.get("mensaje") || "").trim();
     const txt = `Hola NEXO, soy ${nombre}${empresa ? " de " + empresa : ""}. ${mensaje}`;
+    // se abre de forma síncrona dentro del gesto del usuario para que el
+    // navegador no bloquee la pestaña de WhatsApp como popup
+    window.open(
+      `${CONTACT.wa1link}?text=${encodeURIComponent(txt)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
     setSent(true);
-    // abre WhatsApp con el mensaje listo como canal principal de seguimiento
-    setTimeout(() => {
-      window.open(`${CONTACT.wa1link}?text=${encodeURIComponent(txt)}`, "_blank");
-    }, 600);
   };
 
   return (
@@ -39,8 +42,17 @@ export default function Contact() {
           <form className="form reveal" data-d="1" onSubmit={submit}>
             <div className="form__row">
               <div className="field">
-                <label htmlFor="f-nombre">Nombre</label>
-                <input id="f-nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+                <label htmlFor="f-nombre">
+                  Nombre <span className="req">*</span>
+                </label>
+                <input
+                  id="f-nombre"
+                  name="nombre"
+                  type="text"
+                  autoComplete="name"
+                  placeholder="Tu nombre"
+                  required
+                />
               </div>
               <div className="field">
                 <label htmlFor="f-empresa">Empresa</label>
@@ -48,28 +60,42 @@ export default function Contact() {
                   id="f-empresa"
                   name="empresa"
                   type="text"
+                  autoComplete="organization"
                   placeholder="Tu empresa (opcional)"
                 />
               </div>
             </div>
             <div className="form__row">
               <div className="field">
-                <label htmlFor="f-email">Correo</label>
+                <label htmlFor="f-email">
+                  Correo <span className="req">*</span>
+                </label>
                 <input
                   id="f-email"
                   name="email"
                   type="email"
+                  autoComplete="email"
+                  inputMode="email"
                   placeholder="tucorreo@empresa.com"
                   required
                 />
               </div>
               <div className="field">
                 <label htmlFor="f-tel">WhatsApp</label>
-                <input id="f-tel" name="tel" type="tel" placeholder="300 000 0000" />
+                <input
+                  id="f-tel"
+                  name="tel"
+                  type="tel"
+                  autoComplete="tel"
+                  inputMode="tel"
+                  placeholder="300 000 0000"
+                />
               </div>
             </div>
             <div className="field">
-              <label htmlFor="f-mensaje">¿En qué te ayudamos?</label>
+              <label htmlFor="f-mensaje">
+                ¿En qué te ayudamos? <span className="req">*</span>
+              </label>
               <textarea
                 id="f-mensaje"
                 name="mensaje"
@@ -83,11 +109,9 @@ export default function Contact() {
             <p className="form__note">
               Al enviar abriremos WhatsApp con tu mensaje listo para confirmar.
             </p>
-            {sent && (
-              <div className="form__ok">
-                ✓ ¡Gracias! Abrimos WhatsApp para continuar la conversación.
-              </div>
-            )}
+            <div className="form__ok" role="status" aria-live="polite" hidden={!sent}>
+              {sent && "✓ ¡Gracias! Abrimos WhatsApp para continuar la conversación."}
+            </div>
           </form>
 
           <div className="contact__side reveal" data-d="2">
@@ -127,6 +151,13 @@ export default function Contact() {
                 <b>{CONTACT.address}</b>
               </span>
             </div>
+            <iframe
+              className="contact__map"
+              title={`Ubicación de NEXO — ${CONTACT.address}`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(CONTACT.address)}&output=embed`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </div>
