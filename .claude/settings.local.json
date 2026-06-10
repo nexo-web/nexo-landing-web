@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /home/user/nexo-landing-web/public /home/user/nexo-landing-web/app /home/user/nexo-landing-web/components /home/user/nexo-landing-web/lib)",
+      "Bash(cp \"/root/.claude/uploads/a131404a-8651-553f-9db6-7ad1809f288e/extracted/landing-nexo/project/assets/nexo-mark.png\" /home/user/nexo-landing-web/public/nexo-mark.png)",
+      "Bash(cp \"/root/.claude/uploads/a131404a-8651-553f-9db6-7ad1809f288e/extracted/landing-nexo/project/assets/nexo-logo-full.jpeg\" /home/user/nexo-landing-web/public/nexo-logo-full.jpeg)"
+    ]
+  }
+}
