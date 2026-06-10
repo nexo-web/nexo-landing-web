@@ -1192,13 +1192,10 @@ body.motion-on .hero__intro .hero__trust {
   opacity: 0.6;
   pointer-events: none;
 }
-.crypto__grid {
+.crypto__inner {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 56px;
-  align-items: center;
+  max-width: 760px;
 }
 .crypto__list {
   display: grid;
@@ -1232,209 +1229,6 @@ body.motion-on .hero__intro .hero__trust {
 }
 .crypto__li b {
   color: var(--color-ink);
-}
-.crypto__viz {
-  aspect-ratio: 1;
-  border-radius: 18px;
-  border: 1px solid var(--line);
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, #141416, #0b0b0d);
-  display: grid;
-  place-items: center;
-}
-.crypto__viz-grid {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(232, 192, 74, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(232, 192, 74, 0.07) 1px, transparent 1px);
-  background-size: 34px 34px;
-}
-/* ---- mesa OTC (visual del sector cripto) ---- */
-.otc {
-  position: relative;
-  z-index: 2;
-  width: 86%;
-  max-width: 340px;
-  background: linear-gradient(160deg, rgba(26, 23, 16, 0.96), rgba(10, 10, 12, 0.96));
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-  box-shadow: 0 30px 70px -34px #000;
-  backdrop-filter: blur(6px);
-}
-.otc__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-.otc__brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--color-ink);
-}
-.otc__live {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #3ddc97;
-  box-shadow: 0 0 10px #3ddc97;
-  animation: otcPulse 2s ease-in-out infinite;
-}
-@keyframes otcPulse {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.3);
-  }
-}
-.otc__tag {
-  font-family: var(--font-mono);
-  font-size: 8.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-  white-space: nowrap;
-}
-.otc__swap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 14px;
-  border-radius: 12px;
-  background: rgba(232, 192, 74, 0.06);
-  border: 1px solid var(--line);
-}
-.otc__coin {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 15px;
-  color: var(--color-ink);
-}
-.otc__sym {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-size: 15px;
-  font-weight: 700;
-  background: var(--gold-grad);
-  color: #1a1206;
-}
-.otc__coin--alt .otc__sym {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--color-ink);
-  border: 1px solid var(--line-soft);
-}
-.otc__go {
-  color: var(--color-gold);
-  display: grid;
-  place-items: center;
-  flex: 0 0 auto;
-}
-.otc__go svg {
-  width: 18px;
-  height: 18px;
-}
-.otc__meta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-.otc__meta div {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--line-soft);
-  border-radius: 10px;
-  padding: 9px 6px;
-  text-align: center;
-}
-.otc__meta small {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 7.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-  margin-bottom: 4px;
-}
-.otc__meta b {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 12.5px;
-  color: var(--color-ink);
-}
-.otc__spark {
-  display: flex;
-  align-items: flex-end;
-  gap: 4px;
-  height: 40px;
-}
-.otc__spark i {
-  flex: 1;
-  border-radius: 3px 3px 1px 1px;
-  background: var(--gold-grad);
-  opacity: 0.85;
-  transform-origin: bottom;
-  animation: otcBar 2.6s ease-in-out infinite alternate;
-}
-@keyframes otcBar {
-  from {
-    transform: scaleY(0.68);
-  }
-  to {
-    transform: scaleY(1);
-  }
-}
-.otc__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.otc__chips span {
-  font-family: var(--font-mono);
-  font-size: 8.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 4px 8px;
-  background: rgba(232, 192, 74, 0.05);
-}
-@keyframes floaty {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-}
-.crypto__node {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--color-gold);
-  box-shadow: 0 0 14px var(--color-gold);
-  animation: floaty 5s ease-in-out infinite;
 }
 .tags {
   display: flex;
@@ -1480,17 +1274,6 @@ body.motion-on .hero__intro .hero__trust {
     background: rgba(232, 192, 74, 0.13);
     box-shadow: 0 0 18px -3px rgba(232, 192, 74, 0.4);
     color: var(--color-gold-light);
-  }
-}
-@media (max-width: 940px) {
-  .crypto__grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  /* en apilado la caja deja de ser un cuadrado gigante */
-  .crypto__viz {
-    aspect-ratio: 16 / 10;
-    max-height: 420px;
   }
 }
 
