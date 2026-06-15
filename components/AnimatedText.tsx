@@ -20,7 +20,7 @@ function Word({
   range: [number, number];
   reduce: boolean | null;
 }) {
-  const opacity = useTransform(progress, range, [0.16, 1]);
+  const opacity = useTransform(progress, range, [0.55, 1]);
   return (
     <motion.span className="aw" style={{ opacity: reduce ? 1 : opacity }}>
       {children}{" "}

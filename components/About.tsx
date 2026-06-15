@@ -15,7 +15,7 @@ export default function About() {
           </h2>
           <AnimatedText
             className="about__lead"
-            text="NEXO Administración Integral no es un proveedor más: es el área administrativa que tu negocio necesita sin tener que montarla desde cero. Acompañamos por igual a compañías consolidadas y a emprendimientos que recién despegan, con un dominio particular del ecosistema digital y cripto."
+            text="NEXO Administración Integral no es un proveedor más: es el área administrativa que tu negocio necesita sin tener que montarla desde cero. Acompañamos empresas, personas naturales y emprendimientos, con un dominio particular del ecosistema digital y cripto."
           />
           <AnimatedText
             className="about__lead"
